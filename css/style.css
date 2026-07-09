@@ -51,7 +51,9 @@ a { color: inherit; }
 
 /* ---------- layout helpers ---------- */
 .wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); }
-.narrow { max-width: 720px; }
+.narrow { max-width: 860px; }
+.narrow .lead { max-width: 48ch; }
+.narrow p { max-width: 68ch; }
 .section { padding-block: var(--sp-section); }
 
 /* ---------- type ---------- */
@@ -205,6 +207,12 @@ p  { margin: 0 0 1.2em; max-width: var(--measure); }
 @media (min-width: 760px) { .forwho { grid-template-columns: 1fr 1fr; } }
 .forwho > div { background: var(--mist); padding: clamp(1.8rem, 3.5vw, 2.8rem); }
 .forwho .not { background: var(--mist-deep); }
+/* These panels are always light — force dark text even when nested in .panel-dark */
+.forwho h3 { color: var(--moss); }
+.forwho .ticks li { color: var(--bush); }
+.forwho .ticks li::before { border-color: var(--driftwood); }
+.forwho .ticks--cross li::before { border-color: var(--lichen); }
+.forwho .form-note { color: var(--lichen); }
 
 /* ---------- activities strip ---------- */
 .activities { display: grid; gap: 1.5rem; }
