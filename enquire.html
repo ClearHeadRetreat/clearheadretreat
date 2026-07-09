@@ -88,15 +88,43 @@
               </div>
             </div>
 
+            <div class="form-row">
+              <div class="field">
+                <label for="timing">Rough timing</label>
+                <select id="timing" name="timing">
+                  <option value="">No firm dates yet</option>
+                  <option>Next month or two</option>
+                  <option>Next 3–6 months</option>
+                  <option>Later this year</option>
+                  <option>Just exploring for now</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="age">Age range <span class="hint">(optional)</span></label>
+                <select id="age" name="age">
+                  <option value="">Rather not say</option>
+                  <option>25–34</option>
+                  <option>35–44</option>
+                  <option>45–54</option>
+                  <option>55–64</option>
+                  <option>65+</option>
+                </select>
+              </div>
+            </div>
+
             <div class="field">
-              <label for="timing">Rough timing</label>
-              <select id="timing" name="timing">
-                <option value="">No firm dates yet</option>
-                <option>Next month or two</option>
-                <option>Next 3–6 months</option>
-                <option>Later this year</option>
-                <option>Just exploring for now</option>
-              </select>
+              <label>What draws you in? <span class="hint">(tap any — helps me picture your days)</span></label>
+              <div class="chips" role="group" aria-label="What draws you in">
+                <label class="chip"><input type="checkbox" name="interests" value="Guided walks"><span>Guided walks</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Trout fishing"><span>Trout fishing</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Golf"><span>Golf</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Mountain biking"><span>Mountain biking</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Horse riding"><span>Horse riding</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Thermal pools"><span>Thermal pools</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Quiet & reflection"><span>Quiet &amp; reflection</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="The conversations"><span>The conversations</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Just getting away"><span>Just getting away</span></label>
+              </div>
             </div>
 
             <div class="field">
@@ -106,8 +134,14 @@
             </div>
 
             <div class="field">
+              <label for="hopes">What would make this worth it for you? <span class="hint">(optional)</span></label>
+              <span class="hint">In a line or two — what you'd like to leave with.</span>
+              <input id="hopes" name="hopes" type="text">
+            </div>
+
+            <div class="field">
               <label for="notes">Anything I should know? <span class="hint">(optional)</span></label>
-              <span class="hint">Dietary needs, health or accessibility notes, activities you're keen on.</span>
+              <span class="hint">Dietary needs, or anything that'd help me plan.</span>
               <textarea id="notes" name="notes" style="min-height:90px"></textarea>
             </div>
 

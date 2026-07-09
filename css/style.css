@@ -263,6 +263,26 @@ p  { margin: 0 0 1.2em; max-width: var(--measure); }
 @media (min-width: 620px) { .form-row { grid-template-columns: 1fr 1fr; } }
 .form-note { font-family: var(--util); font-size: 0.82rem; color: var(--lichen); }
 
+/* ---------- selectable chips (interests) ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+.chip span {
+  display: inline-block;
+  font-family: var(--util); font-size: 0.85rem; letter-spacing: 0.01em;
+  color: var(--moss);
+  background: var(--paper-white);
+  border: 1px solid var(--stone);
+  border-radius: 100px;
+  padding: .55rem 1.05rem;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+  user-select: none;
+}
+.chip:hover span { border-color: var(--driftwood); }
+.chip input:checked + span { background: var(--moss); border-color: var(--moss); color: var(--mist); }
+.chip input:focus-visible + span { outline: 2px solid var(--driftwood); outline-offset: 2px; }
+
 /* ---------- footer ---------- */
 .site-footer { background: var(--bush); color: color-mix(in srgb, var(--mist) 82%, #000); padding-block: clamp(3.5rem, 7vw, 5.5rem); }
 .site-footer a { color: var(--mist); }
