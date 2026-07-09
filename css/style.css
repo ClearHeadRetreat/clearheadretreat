@@ -307,3 +307,6 @@ p  { margin: 0 0 1.2em; max-width: var(--measure); }
 .center { text-align: center; }
 .mt-sm { margin-top: 1.5rem; } .mt-md { margin-top: 2.5rem; }
 .badge { display: inline-flex; gap: .6rem; align-items: center; font-family: var(--util); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--driftwood); }
+
+/* activity photos sit cleanly in 16:9 cards */
+.activity img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; border-radius: 3px; display: block; }
