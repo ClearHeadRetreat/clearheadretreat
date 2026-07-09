@@ -310,3 +310,18 @@ p  { margin: 0 0 1.2em; max-width: var(--measure); }
 
 /* activity photos sit cleanly in 16:9 cards */
 .activity img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; border-radius: 3px; display: block; }
+
+/* hero refinements */
+.hero-place { font-family: var(--util); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lichen); margin: 0.2rem 0 1.8rem; }
+.hero-img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
+.hero-meta--inline { display: flex; flex-wrap: wrap; gap: 1.5rem 2.8rem; }
+.hero-meta--inline > div { flex: 0 1 auto; }
+@media (max-width: 520px) {
+  .hero-meta--inline { gap: 1.2rem 2rem; }
+  .hero-meta--inline > div { flex: 1 1 40%; }
+}
+
+/* portrait feature images (fire, host) fill the tall slot */
+.ph-tall-img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; display: block; }
+/* landscape image used where a tall slot was (accommodation Home.jpg) */
+.ph-wide-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; display: block; }
