@@ -1,4 +1,4 @@
-/* Clear Head Retreat — light interactivity, no dependencies */
+/* Clear Head Retreat: light interactivity, no dependencies */
 (function () {
   "use strict";
 
@@ -60,18 +60,73 @@
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          if (status) { status.hidden = false; status.textContent = "Thank you. Your enquiry has been received — I'll be in touch personally within a few days."; status.dataset.state = "ok"; }
+          if (status) { status.hidden = false; status.textContent = "Thank you. Your enquiry has been received. I'll be in touch personally within a few days."; status.dataset.state = "ok"; }
           form.style.display = "none";
         } else {
           if (status) { status.hidden = false; status.textContent = "Something went wrong sending your enquiry. Please try again shortly."; status.dataset.state = "err"; }
         }
       }).catch(function () {
-        if (status) { status.hidden = false; status.textContent = "Network issue — your enquiry didn't send. Please try again shortly."; status.dataset.state = "err"; }
+        if (status) { status.hidden = false; status.textContent = "Network issue. Your enquiry didn't send, please try again shortly."; status.dataset.state = "err"; }
       }).finally(function () {
         if (btn) { btn.disabled = false; btn.textContent = original; }
       });
     });
   }
+
+  // --- Smooth FAQ accordion (animates <details> open/close) ---
+  var EASE_OPEN = "height .36s cubic-bezier(.22,.75,.3,1), opacity .3s ease .04s";
+  var EASE_SHUT = "height .28s cubic-bezier(.4,0,.65,1), opacity .18s ease";
+
+  document.querySelectorAll(".faq details").forEach(function (d) {
+    var summary = d.querySelector("summary");
+    var panel = d.querySelector(".answer");
+    if (!summary || !panel) return;
+
+    function settle() {
+      panel.style.transition = "";
+      panel.style.height = "";
+      panel.style.opacity = "";
+      d.removeAttribute("data-animating");
+    }
+
+    summary.addEventListener("click", function (ev) {
+      if (reduce) return; // native behaviour, no animation
+      ev.preventDefault();
+      if (d.hasAttribute("data-animating")) return;
+      d.setAttribute("data-animating", "");
+
+      if (!d.open) {
+        d.open = true;
+        var target = panel.scrollHeight;
+        panel.style.height = "0px";
+        panel.style.opacity = "0";
+        requestAnimationFrame(function () {
+          panel.style.transition = EASE_OPEN;
+          panel.style.height = target + "px";
+          panel.style.opacity = "1";
+        });
+        panel.addEventListener("transitionend", function onEnd(e) {
+          if (e.propertyName !== "height") return;
+          panel.removeEventListener("transitionend", onEnd);
+          settle();
+        });
+      } else {
+        panel.style.height = panel.scrollHeight + "px";
+        panel.style.opacity = "1";
+        requestAnimationFrame(function () {
+          panel.style.transition = EASE_SHUT;
+          panel.style.height = "0px";
+          panel.style.opacity = "0";
+        });
+        panel.addEventListener("transitionend", function onEnd(e) {
+          if (e.propertyName !== "height") return;
+          panel.removeEventListener("transitionend", onEnd);
+          d.open = false;
+          settle();
+        });
+      }
+    });
+  });
 
   // --- Year in footer ---
   var y = document.getElementById("year");

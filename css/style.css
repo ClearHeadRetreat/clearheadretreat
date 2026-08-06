@@ -243,9 +243,16 @@ p  { margin: 0 0 1.2em; max-width: var(--measure); }
 .faq summary { cursor: pointer; list-style: none; padding: 1.5rem 2.5rem 1.5rem 0; position: relative; font-family: var(--display); font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--moss); }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; position: absolute; right: .4rem; top: 1.35rem; font-family: var(--util); font-size: 1.4rem; color: var(--driftwood); transition: transform .3s; }
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq .answer { padding: 0 2.5rem 1.7rem 0; }
+.faq .answer { padding: 0; overflow: hidden; }
+.faq .answer > * { padding: 0 2.5rem 1.7rem 0; }
 .faq .answer p { color: var(--lichen); margin: 0; }
+.faq summary { transition: color .25s ease; }
+.faq summary:hover { color: var(--driftwood); }
+.faq summary::after { transition: transform .34s cubic-bezier(.25,.8,.35,1), color .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .faq summary::after { transition: none; }
+}
 
 /* ---------- form ---------- */
 .form { display: grid; gap: 1.5rem; }
