@@ -60,7 +60,7 @@
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          if (status) { status.hidden = false; status.textContent = "Thank you. Your enquiry has been received. We'll be in touch personally within a few days."; status.dataset.state = "ok"; }
+          if (status) { status.hidden = false; status.textContent = "Thank you. Your enquiry has been received. I'll be in touch personally within a few days."; status.dataset.state = "ok"; }
           form.style.display = "none";
         } else {
           if (status) { status.hidden = false; status.textContent = "Something went wrong sending your enquiry. Please try again shortly."; status.dataset.state = "err"; }
